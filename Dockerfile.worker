@@ -4,6 +4,6 @@ ENV WORKERS_COUNT=${WORKERS_COUNT:-1}
 ENV QUEUES=${QUEUES:-celery}
 
 WORKDIR /app
-RUN pip install --upgrade yfinance fbprophet numpy pandas matplotlib
+RUN pip install --upgrade yfinance convertdate numpy pandas matplotlib
 
 CMD /usr/local/bin/celery worker --app=redash.worker --beat -c$WORKERS_COUNT -Q$QUEUES -linfo --maxtasksperchild=10 -Ofair
